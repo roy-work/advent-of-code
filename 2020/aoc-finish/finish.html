@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+</style>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script>
+var TODAYS_DAY = 24;
+var JSON = {"owner_id":"634923","members":{"995192":{"local_score":349,"stars":45,"completion_day_level":{"19":{"2":{"get_star_ts":"1608358699"},"1":{"get_star_ts":"1608356492"}},"12":{"1":{"get_star_ts":"1607750601"},"2":{"get_star_ts":"1607751372"}},"22":{"2":{"get_star_ts":"1608616304"},"1":{"get_star_ts":"1608614170"}},"7":{"1":{"get_star_ts":"1607318919"},"2":{"get_star_ts":"1607319927"}},"9":{"2":{"get_star_ts":"1607491089"},"1":{"get_star_ts":"1607490482"}},"4":{"2":{"get_star_ts":"1607061538"},"1":{"get_star_ts":"1607059815"}},"21":{"2":{"get_star_ts":"1608529663"},"1":{"get_star_ts":"1608529190"}},"10":{"1":{"get_star_ts":"1607576973"},"2":{"get_star_ts":"1607580173"}},"8":{"1":{"get_star_ts":"1607404253"},"2":{"get_star_ts":"1607404640"}},"11":{"2":{"get_star_ts":"1607666099"},"1":{"get_star_ts":"1607665104"}},"5":{"2":{"get_star_ts":"1607145219"},"1":{"get_star_ts":"1607145018"}},"15":{"1":{"get_star_ts":"1608009978"},"2":{"get_star_ts":"1608010060"}},"6":{"1":{"get_star_ts":"1607231347"},"2":{"get_star_ts":"1607231764"}},"14":{"1":{"get_star_ts":"1607923013"},"2":{"get_star_ts":"1607924152"}},"23":{"1":{"get_star_ts":"1608701044"}},"1":{"2":{"get_star_ts":"1606800421"},"1":{"get_star_ts":"1606800282"}},"3":{"1":{"get_star_ts":"1606973324"},"2":{"get_star_ts":"1606973575"}},"13":{"1":{"get_star_ts":"1607836461"},"2":{"get_star_ts":"1607840732"}},"24":{"1":{"get_star_ts":"1608788539"},"2":{"get_star_ts":"1608789417"}},"18":{"1":{"get_star_ts":"1608269559"},"2":{"get_star_ts":"1608270267"}},"17":{"1":{"get_star_ts":"1608182696"},"2":{"get_star_ts":"1608182891"}},"2":{"2":{"get_star_ts":"1606886250"},"1":{"get_star_ts":"1606886052"}},"16":{"1":{"get_star_ts":"1608095970"},"2":{"get_star_ts":"1608096921"}}},"global_score":0,"id":"995192","last_star_ts":"1608789417","name":"Roy Wellington"},"634923":{"completion_day_level":{},"global_score":0,"stars":0,"local_score":0,"id":"634923","last_star_ts":"0","name":"cbzehner"},"326721":{"id":"326721","name":"prestontw","last_star_ts":"1608358870","local_score":244,"stars":36,"completion_day_level":{"8":{"2":{"get_star_ts":"1607405071"},"1":{"get_star_ts":"1607404254"}},"10":{"1":{"get_star_ts":"1607577037"},"2":{"get_star_ts":"1607577997"}},"11":{"1":{"get_star_ts":"1607664445"},"2":{"get_star_ts":"1607664887"}},"4":{"1":{"get_star_ts":"1607059071"},"2":{"get_star_ts":"1607060705"}},"12":{"1":{"get_star_ts":"1607750621"},"2":{"get_star_ts":"1607751734"}},"7":{"1":{"get_star_ts":"1607319544"},"2":{"get_star_ts":"1607321537"}},"9":{"2":{"get_star_ts":"1607491913"},"1":{"get_star_ts":"1607491362"}},"14":{"2":{"get_star_ts":"1607972895"},"1":{"get_star_ts":"1607926890"}},"6":{"1":{"get_star_ts":"1607233300"},"2":{"get_star_ts":"1607233682"}},"15":{"2":{"get_star_ts":"1608010837"},"1":{"get_star_ts":"1608010540"}},"5":{"1":{"get_star_ts":"1607145229"},"2":{"get_star_ts":"1607145454"}},"13":{"1":{"get_star_ts":"1607839945"},"2":{"get_star_ts":"1607903965"}},"3":{"1":{"get_star_ts":"1606972580"},"2":{"get_star_ts":"1606973586"}},"1":{"2":{"get_star_ts":"1606802969"},"1":{"get_star_ts":"1606802810"}},"16":{"1":{"get_star_ts":"1608097930"},"2":{"get_star_ts":"1608102119"}},"2":{"2":{"get_star_ts":"1606886412"},"1":{"get_star_ts":"1606886071"}},"17":{"1":{"get_star_ts":"1608185177"},"2":{"get_star_ts":"1608185410"}},"18":{"1":{"get_star_ts":"1608271415"},"2":{"get_star_ts":"1608358870"}}},"global_score":0},"989417":{"name":"Daniel Fernando Cubides","last_star_ts":"1607466606","id":"989417","stars":6,"local_score":20,"global_score":0,"completion_day_level":{"3":{"2":{"get_star_ts":"1607466606"},"1":{"get_star_ts":"1607460090"}},"1":{"1":{"get_star_ts":"1606878494"},"2":{"get_star_ts":"1606878515"}},"2":{"2":{"get_star_ts":"1607312336"},"1":{"get_star_ts":"1607310948"}}}},"434569":{"last_star_ts":"1608174667","name":"byronwasti","id":"434569","global_score":0,"completion_day_level":{"4":{"2":{"get_star_ts":"1607103733"},"1":{"get_star_ts":"1607102853"}},"8":{"2":{"get_star_ts":"1607476471"},"1":{"get_star_ts":"1607475427"}},"10":{"1":{"get_star_ts":"1607650558"},"2":{"get_star_ts":"1607651635"}},"11":{"1":{"get_star_ts":"1607741552"},"2":{"get_star_ts":"1607743116"}},"12":{"2":{"get_star_ts":"1607785499"},"1":{"get_star_ts":"1607784968"}},"7":{"1":{"get_star_ts":"1607387741"},"2":{"get_star_ts":"1607388094"}},"9":{"2":{"get_star_ts":"1607557233"},"1":{"get_star_ts":"1607556091"}},"6":{"1":{"get_star_ts":"1607232161"},"2":{"get_star_ts":"1607232309"}},"14":{"1":{"get_star_ts":"1607994852"},"2":{"get_star_ts":"1607999906"}},"5":{"1":{"get_star_ts":"1607183488"},"2":{"get_star_ts":"1607183752"}},"15":{"1":{"get_star_ts":"1608070971"},"2":{"get_star_ts":"1608071118"}},"1":{"1":{"get_star_ts":"1606861091"},"2":{"get_star_ts":"1606862445"}},"13":{"2":{"get_star_ts":"1607880192"},"1":{"get_star_ts":"1607873906"}},"3":{"2":{"get_star_ts":"1607033946"},"1":{"get_star_ts":"1607033807"}},"2":{"2":{"get_star_ts":"1606931985"},"1":{"get_star_ts":"1606931586"}},"16":{"2":{"get_star_ts":"1608174667"},"1":{"get_star_ts":"1608173066"}}},"stars":32,"local_score":182},"181598":{"name":"nwtnni","last_star_ts":"1608789109","id":"181598","stars":47,"local_score":393,"global_score":64,"completion_day_level":{"24":{"1":{"get_star_ts":"1608787499"},"2":{"get_star_ts":"1608789109"}},"1":{"2":{"get_star_ts":"1606799642"},"1":{"get_star_ts":"1606799608"}},"3":{"2":{"get_star_ts":"1606972465"},"1":{"get_star_ts":"1606972225"}},"13":{"1":{"get_star_ts":"1607836187"}},"2":{"1":{"get_star_ts":"1606885526"},"2":{"get_star_ts":"1606885627"}},"17":{"2":{"get_star_ts":"1608182326"},"1":{"get_star_ts":"1608182164"}},"16":{"1":{"get_star_ts":"1608095817"},"2":{"get_star_ts":"1608097670"}},"18":{"1":{"get_star_ts":"1608270235"},"2":{"get_star_ts":"1608270797"}},"4":{"2":{"get_star_ts":"1607059857"},"1":{"get_star_ts":"1607058676"}},"11":{"2":{"get_star_ts":"1607665222"},"1":{"get_star_ts":"1607663684"}},"10":{"1":{"get_star_ts":"1607576582"},"2":{"get_star_ts":"1607578533"}},"8":{"2":{"get_star_ts":"1607404217"},"1":{"get_star_ts":"1607404001"}},"21":{"2":{"get_star_ts":"1608533679"},"1":{"get_star_ts":"1608530103"}},"9":{"1":{"get_star_ts":"1607490633"},"2":{"get_star_ts":"1607491121"}},"19":{"1":{"get_star_ts":"1608355101"},"2":{"get_star_ts":"1608359038"}},"7":{"1":{"get_star_ts":"1607318224"},"2":{"get_star_ts":"1607319162"}},"20":{"1":{"get_star_ts":"1608447138"},"2":{"get_star_ts":"1608451927"}},"12":{"1":{"get_star_ts":"1607750225"},"2":{"get_star_ts":"1607751357"}},"22":{"2":{"get_star_ts":"1608616811"},"1":{"get_star_ts":"1608613681"}},"6":{"2":{"get_star_ts":"1607231393"},"1":{"get_star_ts":"1607231044"}},"23":{"1":{"get_star_ts":"1608700913"},"2":{"get_star_ts":"1608705313"}},"14":{"2":{"get_star_ts":"1607924316"},"1":{"get_star_ts":"1607922830"}},"5":{"1":{"get_star_ts":"1607144748"},"2":{"get_star_ts":"1607144915"}},"15":{"2":{"get_star_ts":"1608009800"},"1":{"get_star_ts":"1608009739"}}}},"864527":{"id":"864527","name":"Bownairo","last_star_ts":"0","completion_day_level":{},"global_score":0,"local_score":0,"stars":0},"1114775":{"name":"Glory Kim","last_star_ts":"1606934871","id":"1114775","global_score":0,"completion_day_level":{"1":{"1":{"get_star_ts":"1606934871"}}},"stars":1,"local_score":0},"1265074":{"completion_day_level":{"11":{"1":{"get_star_ts":"1607670145"},"2":{"get_star_ts":"1607670485"}}},"global_score":0,"stars":2,"local_score":12,"id":"1265074","name":"Glory Kim","last_star_ts":"1607670485"}},"event":"2020"};
+
+function hasOwnProp(obj, k) {
+	return Object.prototype.hasOwnProperty.call(obj, k);
+}
+
+function render(the_date, day_times) {
+	console.log('render() called.');
+
+	let end = new Date(the_date);
+	const graph_width_in_minutes = 120;
+	end.setMinutes(graph_width_in_minutes);
+
+	const will_render = function(t) {
+		return t !== null && t < end;
+	};
+
+	let remaining_day_times = [];
+	for(var dt of day_times) {
+		if(will_render(dt.silver) || will_render(dt.gold)) {
+			remaining_day_times.push(dt);
+		}
+	}
+
+	// set the dimensions and margins of the graph
+	var margin = {top: 10, right: 210, bottom: 75, left: 35};
+	var width = 1000 - margin.left - margin.right;
+	var height = 20 * remaining_day_times.length;
+
+	/*
+	width = this.svg_.clientWidth - margin.left - margin.right;
+	height = this.svg_.clientHeight - margin.top - margin.bottom;
+	*/
+	// append the svg object to the body of the page
+	var svg_el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	var svg_d3 = d3.select(svg_el)
+		//.append('svg')
+		.attr('width', width + margin.left + margin.right)
+		.attr('height', height + margin.top + margin.bottom)
+		// translate this svg element to leave some margin.
+		.append('g')
+		.attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+	// X scale and Axis
+	var x = d3.scaleTime()
+		// This is the min and the max of the data: 0 to 100 if percentages
+		.domain([the_date, end], (p) => p.t)
+		//.domain([0, 100])
+		// This is the corresponding value I want in Pixel
+		.range([0, width]);
+
+	svg_d3
+		.append('g')
+		.attr('transform', `translate(0, ${height})`)
+		.attr('class', 'y-axis')
+		.call(d3.axisBottom(x).ticks(24).tickFormat(xAxisTime))
+		.selectAll("text")
+		.style("text-anchor", "end")
+		.attr("dx", "-.8em")
+		.attr("dy", "-.15em")
+		.attr("transform", "rotate(-65)");
+
+	let y = 0;
+
+	const render_time = function(time, y, color) {
+		if(!will_render(time)) {
+			return;
+		}
+		let x = (time.valueOf() - the_date.valueOf()) / 1000;
+		x = x / (graph_width_in_minutes * 60);
+		x *= width;
+		console.log(`the_date = ${the_date}`);
+		console.log(`x = ${x}`);
+		svg_d3
+			.append('circle')
+			.attr('cx', x)
+			.attr('cy', y + 10)
+			.attr('r', 5)
+			.attr('fill', color);
+	};
+
+	for(let result of remaining_day_times) {
+		console.log(result);
+		svg_d3
+			.append('text')
+			.attr('x', 3 + width)
+			.attr('y', y + 15)
+			//.attr('dominant-baseline', 'middle')
+			.text(result.name);
+		svg_d3
+			.append('line')
+			.attr('x1', '0')
+			.attr('y1', y + 10)
+			.attr('x2', width)
+			.attr('y2', y + 10)
+			.attr('stroke', 'darkgrey');
+		render_time(result.silver, y, 'silver');
+		render_time(result.gold, y, 'gold');
+		y += 20;
+	}
+
+	document.body.appendChild(svg_el);
+	document.body.appendChild(document.createElement('br'));
+}
+
+function xAxisTime(t) {
+	let minutes = t.getMinutes();
+	if(minutes < 10) {
+		minutes = `0${minutes}`;
+	}
+	let seconds = t.getSeconds();
+	if(seconds < 10) {
+		seconds = `0${seconds}`;
+	}
+	let hour = t.getHours();
+	if(hour == 0) {
+		hour = 12;
+	}
+
+	return `${hour}:${minutes}:${seconds} a.m.`;
+}
+document.addEventListener('DOMContentLoaded', (event) => {
+	for(let day = 1; day < TODAYS_DAY + 1; ++day) {
+		let day_results_by_member = [];
+		for(let k in JSON.members) {
+			if(!hasOwnProp(JSON.members, k)) continue;
+			let member = JSON.members[k];
+			let silver_time = null;
+			let gold_time = null;
+			if(hasOwnProp(member.completion_day_level, day)) {
+				let day_times = member.completion_day_level[day];
+				if(hasOwnProp(day_times, '1')) {
+					silver_time = new Date(day_times['1'].get_star_ts * 1000);
+				}
+				if(hasOwnProp(day_times, '2')) {
+					gold_time = new Date(day_times['2'].get_star_ts * 1000);
+				}
+			}
+			let results = {
+				name: member.name,
+				silver: silver_time,
+				gold: gold_time,
+			};
+			day_results_by_member.push(results);
+		}
+		console.log(`Rendering SVG for Dec ${day}`);
+		document.body.appendChild(document.createTextNode(`Dec ${day}`));
+		document.body.appendChild(document.createElement('br'));
+		render(new Date(2020, 12 - 1, day), day_results_by_member);
+	}
+});
+</script>
+</head>
+<body>
+</body>
+</html>
