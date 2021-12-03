@@ -6,6 +6,7 @@ use std::path::{Path, PathBuf};
 use structopt::StructOpt;
 
 pub mod map;
+pub mod to_tuple;
 
 pub mod prelude {
     use std::collections;
@@ -17,6 +18,8 @@ pub mod prelude {
     pub use fs::File;
     pub use io::{BufRead, BufReader};
     pub use path::Path;
+
+    pub use crate::to_tuple::{ToTuple, IterExtToTuple};
 }
 
 pub fn file_o_numbers<P: AsRef<Path>>(path: P) -> io::Result<Vec<i64>> {
