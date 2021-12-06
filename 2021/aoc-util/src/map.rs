@@ -35,6 +35,19 @@ impl<T> Map<T> {
     pub fn at(&self, x: usize, y: usize) -> Option<&T> {
         self.0.get(y).and_then(|row| row.get(x))
     }
+
+    pub fn at_mut(&mut self, x: usize, y: usize) -> Option<&mut T> {
+        self.0.get_mut(y).and_then(|row| row.get_mut(x))
+    }
+
+    pub fn render_single_char<F: Fn(&T) -> char>(&self, df: F) {
+        for row in self.0.iter() {
+            for cell in row.iter() {
+                print!("{}", df(cell));
+            }
+            println!()
+        }
+    }
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]

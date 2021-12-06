@@ -14,6 +14,7 @@ pub mod prelude {
     use std::io;
     use std::path;
 
+    pub use std::convert::{TryFrom, TryInto};
     pub use collections::{HashMap, HashSet};
     pub use fs::File;
     pub use io::{BufRead, BufReader};
@@ -31,6 +32,10 @@ pub fn file_o_numbers<P: AsRef<Path>>(path: P) -> io::Result<Vec<i64>> {
         numbers.push(line.parse().expect("could not parse line as number"));
     }
     Ok(numbers)
+}
+
+pub fn comma_split<F: Fn(&str) -> T, T>(s: &str, f: F) -> Vec<T> {
+    s.split(',').map(f).collect()
 }
 
 /*
@@ -171,7 +176,10 @@ macro_rules! hot_parse {
             use once_cell::sync::Lazy;
             use regex::Regex;
             static REGEX: Lazy<Regex> = Lazy::new(|| Regex::new($regex).expect("regex failed to compile"));
-            let capture = REGEX.captures(input).ok_or($crate::HotParseError::RegexMatchFailed)?;
+            let capture = REGEX.captures(input).ok_or_else(|| {
+                eprintln!("Failed on: {:?}", input);
+                $crate::HotParseError::RegexMatchFailed
+            })?;
             let t = ($(
                 capture
                     .get($group)
