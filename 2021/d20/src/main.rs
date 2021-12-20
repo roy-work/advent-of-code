@@ -80,25 +80,6 @@ fn new_image(width: usize, height: usize) -> Map<Pixel> {
     Map(rows)
 }
 
-fn border(image: &Map<Pixel>) -> Map<Pixel> {
-    let mut new_rows = Vec::new();
-    let width = image.width();
-    let mut first_row = Vec::new();
-    for _ in 0 .. width+2 {
-        first_row.push(Pixel::Dot);
-    }
-    new_rows.push(first_row.clone());
-    for row in image.0.iter() {
-        let new_row = std::iter::once(Pixel::Dot)
-            .chain(row.iter().copied())
-            .chain(std::iter::once(Pixel::Dot))
-            .collect::<Vec<_>>();
-        new_rows.push(new_row);
-    }
-    new_rows.push(first_row);
-    Map(new_rows)
-}
-
 const OFFSETS: &[(i64, i64)] = &[
     (-1, -1),
     (0, -1),

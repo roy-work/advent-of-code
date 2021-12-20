@@ -14,13 +14,13 @@ pub mod prelude {
     use std::io;
     use std::path;
 
-    pub use std::convert::{TryFrom, TryInto};
-    pub use collections::{HashMap, HashSet};
+    pub use collections::{HashMap, HashSet, VecDeque};
     pub use fs::File;
     pub use io::{BufRead, BufReader};
     pub use path::Path;
+    pub use std::convert::{TryFrom, TryInto};
 
-    pub use crate::to_tuple::{ToTuple, IterExtToTuple};
+    pub use crate::to_tuple::{IterExtToTuple, ToTuple};
 }
 
 pub fn file_o_numbers<P: AsRef<Path>>(path: P) -> io::Result<Vec<i64>> {
@@ -36,6 +36,25 @@ pub fn file_o_numbers<P: AsRef<Path>>(path: P) -> io::Result<Vec<i64>> {
 
 pub fn comma_split<F: Fn(&str) -> T, T>(s: &str, f: F) -> Vec<T> {
     s.split(',').map(f).collect()
+}
+
+pub fn comma_try_split<F: Fn(&str) -> Result<T, E>, T, E>(s: &str, f: F) -> Result<Vec<T>, E> {
+    s.split(',').map(f).collect::<Result<Vec<T>, E>>()
+}
+
+pub fn single_line_input<P: AsRef<Path>>(path: P) -> io::Result<String> {
+    let reader = BufReader::new(File::open(path)?);
+    let mut lines = reader.lines();
+    let line = lines
+        .next()
+        .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidData, "no lines in input file"))??;
+    match lines.next() {
+        Some(_) => Err(io::Error::new(
+            io::ErrorKind::InvalidData,
+            "multiple lines in input file",
+        )),
+        None => Ok(line),
+    }
 }
 
 /*
