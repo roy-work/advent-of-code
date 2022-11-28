@@ -1,5 +1,5 @@
 use aoc::prelude::*;
-use aoc::map::{Coord, Map};
+use aoc::map::{BoundCoord, FreeCoord, Map};
 
 type Input = Map<i64>;
 
@@ -23,6 +23,7 @@ fn parser(path: &Path) -> anyhow::Result<Input> {
     Ok(Map(input))
 }
 
+/*
 fn adj_tiles(input: &Input, center: Coord) -> Vec<Coord> {
     const OFFSETS: &[(i64, i64)] = &[
         (-1, 0),
@@ -50,16 +51,19 @@ fn adj_tiles(input: &Input, center: Coord) -> Vec<Coord> {
         });
     }
     results
-}
+:
+*/
 
 fn part_a(input: &Input) -> i64 {
     let mut low_points = Vec::new();
     for (y, row) in input.0.iter().enumerate() {
         'looking: for (x, cell) in row.iter().enumerate() {
-            let center = Coord { x, y };
-            let adj = adj_tiles(input, center);
-            for adj_coord in adj {
-                if input.at(adj_coord.x, adj_coord.y).unwrap() <= cell {
+            let center = FreeCoord { x: x as i64, y: y as i64 }.bind(input).unwrap();
+            //println!("center = {:?}", center);
+            //let adj = adj_tiles(input, center);
+            for adj_coord in center.adj_cardinal() {
+                //println!("adj_coord = {:?}", adj_coord);
+                if input.at(adj_coord).unwrap() <= cell {
                     continue 'looking;
                 }
             }
@@ -70,21 +74,21 @@ fn part_a(input: &Input) -> i64 {
     low_points.iter().sum()
 }
 
-fn find_basin_size(input: &Input, basin_start: Coord) -> i64 {
-    let mut visited = HashSet::<Coord>::new();
+fn find_basin_size(input: &Input, basin_start: BoundCoord) -> i64 {
+    let mut visited = HashSet::<BoundCoord>::new();
     let mut tiles = 0;
     let mut need_to_scan = Vec::new();
-    visited.insert(basin_start);
+    visited.insert(basin_start.clone());
     need_to_scan.push(basin_start);
 
     while let Some(coord) = need_to_scan.pop() {
         tiles += 1;
-        let adj = adj_tiles(input, coord);
-        for adj_coord in adj {
+        //let adj = adj_tiles(input, coord);
+        for adj_coord in coord.adj_cardinal() {
             if !visited.contains(&adj_coord) {
-                visited.insert(adj_coord);
-                if *input.at(adj_coord.x, adj_coord.y).unwrap() < 9 {
-                    need_to_scan.push(adj_coord);
+                visited.insert(adj_coord.clone());
+                if *input.at(&adj_coord).unwrap() < 9 {
+                    need_to_scan.push(adj_coord.clone());
                 }
             }
         }
@@ -96,10 +100,10 @@ fn part_b(input: &Input) -> i64 {
     let mut low_points = Vec::new();
     for (y, row) in input.0.iter().enumerate() {
         'looking: for (x, cell) in row.iter().enumerate() {
-            let center = Coord { x, y };
-            let adj = adj_tiles(input, center);
-            for adj_coord in adj {
-                if input.at(adj_coord.x, adj_coord.y).unwrap() <= cell {
+            let center = FreeCoord { x: x as i64, y: y as i64 }.bind(input).unwrap();
+            //let adj = adj_tiles(input, center);
+            for adj_coord in center.adj_cardinal() {
+                if input.at(adj_coord).unwrap() <= cell {
                     continue 'looking;
                 }
             }

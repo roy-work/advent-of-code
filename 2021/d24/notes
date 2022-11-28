@@ -1,0 +1,22 @@
+w = digits[0]
+x = 1
+y = 26
+
+inp w     # w = first digit
+mul x 0   # x = 0
+add x z   # x = 0   (x = 0 + z = 0 here)
+mod x 26  # x = 0
+div z 1   # z = 0
+add x 14  # x = 14
+eql x w   # x = 0
+eql x 0   # x = 1
+mul y 0   # y = 0
+add y 25  # y = 25
+mul y x   # y = 25
+add y 1   # y = 26
+mul z y   # z = 0
+mul y 0   # y = 0
+add y w   # y = digit
+add y 12  # y = digit + 12
+mul y x   # y = digit + 12
+add z y   # z = digit + 12  ???

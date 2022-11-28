@@ -1,0 +1,17 @@
+[package]
+name = "a"
+version = "0.1.0"
+authors = ["Roy Wellington Ⅳ <cactus_hugged@yahoo.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.34"
+building_blocks_core = "0.7.1"
+building_blocks_storage = "0.7.1"
+once_cell = "1.5.2"
+petgraph = "0.6.0"
+regex = "1"
+
+aoc = {package = "aoc-util", path = "../aoc-util"}

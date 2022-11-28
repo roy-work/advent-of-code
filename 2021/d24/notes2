@@ -1,0 +1,94 @@
+inp w
+mul x 0
+add x z
+mod x 26
+div z 26
+add x -14
+eql x w
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y
+mul y 0
+add y w
+add y 4
+mul y x
+add z y
+
+w = input()
+x = z % 26
+z = z / 26
+x -= 14
+x = x != w
+if x != w {
+	y = (25 * x) + 1
+} else {
+	y = 1
+}
+z *= y
+y = (w + 4) * x
+z += y
+
+
+
+inp w     # w = 9
+mul x 0   # x = 0
+add x z   # x = 0
+mod x 26  # x = 0
+div z 1   # z = 0
+add x 14  # x = 14
+eql x w   # x = 0
+eql x 0   # x = 1
+mul y 0   # y = 0
+add y 25  # y = 25
+mul y x   # y = 25
+add y 1   # y = 26
+mul z y   # z = 0
+mul y 0   # y = 0
+add y w   # y = 9
+add y 12  # y = 21
+mul y x   # y = 21
+add z y   # z = 21
+
+
+inp w       # w = 9
+mul x 0     # x = 0
+add x z     # x = 0
+mod x 26    # x = 0
+div z 1     # z = 0
+add x 14    # x = 14
+eql x w     # x = 0
+eql x 0     # x = 1
+mul y 0     # y = 0
+add y 25    # y = 25
+mul y x     # y = 25
+add y 1     # y = 26
+mul z y     # z = 0
+mul y 0     # y = 0
+add y w     # y = 9
+add y 12    # y = 21
+mul y x     # y = 21
+add z y     # z = 21
+r: 9, Regs { w: 9, x: 1, y: 21, z: 21 }
+
+
+inp w     # w = 9
+mul x 0   # x = 0
+add x z   # x = 0
+mod x 26
+div z 26
+add x -14
+eql x w
+eql x 0
+mul y 0
+add y 25
+mul y x
+add y 1
+mul z y
+mul y 0
+add y w
+add y 4
+mul y x
+add z y
